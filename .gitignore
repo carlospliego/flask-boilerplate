@@ -1,5 +1,4 @@
 .env/
 .env_
-.vscode/
 app/__pycache__
 
