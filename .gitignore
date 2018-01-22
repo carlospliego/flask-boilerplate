@@ -1,4 +1,4 @@
-.env/
+vendor
 .env_
 app/__pycache__
 

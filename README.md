@@ -13,3 +13,12 @@ Python 3.6^
 ## Install package and save requirements ( do this inside the environment )
 `pip3 install package`
 `pip3 freeze > requirements.txt`
+
+
+
+
+vendor:
+	docker-compose run --rm vendors
+
+run:
+	docker-compose up -d server
