@@ -47,7 +47,7 @@ the `Dockerfile` to take advantage of the `COPY` command so that these images ca
 contain all of the source necessary to self execute w/ out volumes.*
 
 ### build an image
-`docker build -t <img-tag> .`
+`docker build -t <img-tag> . -f <Dockerfile>`
 
 ### start a container
 `docker run -d --name <container-name> -p 3001:5000 <img-tag>`

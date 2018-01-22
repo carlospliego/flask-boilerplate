@@ -3,6 +3,8 @@
 .env
 src/__pycache__
 docker-compose.yml
-Dockerfile
+dev.Dockerfile
+prod.Dockerfile
+makefile
 
 
