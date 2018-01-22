@@ -30,7 +30,7 @@ dependencies*
 ### Running a container
 *This will run the script defined in `docker-compose.yml`. It is important to 
 note that this script will create a volume pointing to your local source code and
-`.env` folder*
+`.venv` folder*
 
 `docker-compose up -d server`
 
@@ -44,7 +44,7 @@ contain all of the source necessary to self execute w/ out volumes.*
 `docker build -t <img-tag> .`
 
 ### start a container
-`docker run -d --name <container-name> -p 3000:5000 <img-tag>`
+`docker run -d --name <container-name> -p 3001:5000 <img-tag>`
 
 ## Versioning
 We use SemVer for versioning.

@@ -1,0 +1,2 @@
+PYTHONUSERBASE=/mnt/.virtual
+FLASK_DEBUG=1
