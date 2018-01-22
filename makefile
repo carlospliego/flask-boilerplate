@@ -8,10 +8,12 @@ REQ= requirements.txt
 ENV_CONFIGS=configs
 
 install:
-	rm -rf $(VENV_DIR)/ # remove .virtual directory
-	rm -f $(ENV_FILE) # remove .env file
+	source configs/docker/env.sh; rm -rf docker-compose.yml; envsubst < "configs/docker/docker-compose.yml" > "docker-compose.yml";
+	source configs/docker/env.sh; rm -rf Dockerfile; envsubst < "configs/docker/Dockerfile" > "Dockerfile";
+	rm -rf $(VENV_DIR)/
+	rm -f $(ENV_FILE)
 	$(CREATE_VIRTUAL_ENV)
-	$(ACTIVATE_ENV) && $(PIP) install -r $(REQ) && deactivate # install dependencies
+	$(ACTIVATE_ENV) && $(PIP) install -r $(REQ) && deactivate
 	cp $(ENV_CONFIGS)/local $(ENV_FILE)
 
 package:
