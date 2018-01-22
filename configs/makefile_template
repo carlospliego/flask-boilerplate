@@ -1,10 +1,10 @@
-PIP= pip3
-VENV_DIR=.virtual
-ENV_FILE= .env
+PIP= ${PIP}
+VENV_DIR=${VENV_FOLDER}
+ENV_FILE= ${ENV_FILE}
 CREATE_VIRTUAL_ENV= virtualenv $(VENV_DIR)
 ACTIVATE_ENV= . $(VENV_DIR)/bin/activate
-REQ= requirements.txt
-ENV_CONFIGS=configs
+REQ= ${PIP_REQS}
+ENV_CONFIGS=${ENV_CONFIGS}
 
 install-local:
 	source configs/env.sh; rm -rf docker-compose.yml; envsubst < "configs/docker_templates/docker-compose.yml" > "docker-compose.yml";
@@ -15,7 +15,7 @@ install-local:
 	rm -f $(ENV_FILE)
 	$(CREATE_VIRTUAL_ENV)
 	$(ACTIVATE_ENV) && $(PIP) install -r $(REQ) && deactivate
-	cp $(ENV_CONFIGS)/env/local $(ENV_FILE)
+	cp $(ENV_CONFIGS)/local $(ENV_FILE)
 
 package:
 	$(ACTIVATE_ENV) && $(PIP) install $(P)

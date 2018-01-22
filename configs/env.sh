@@ -18,6 +18,9 @@ export NON_LOCAL_PORT=3001
 # runtime environment file
 export ENV_FILE=.env
 
+# pip
+export PIP=pip3
+
 # virtual environment folder
 export VENV_FOLDER=.virtual
 
@@ -26,3 +29,6 @@ export PIP_REQS=requirements.txt
 
 # application entry point
 export ENTRYPOINT=src/server.py
+
+# env configs
+export ENV_CONFIGS=configs/env
