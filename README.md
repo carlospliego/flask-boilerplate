@@ -1,50 +1,55 @@
+# boiler_flask
 
-# Local Dev
-## Install
+
+A Python boilerplate for services using Flask, wrapped in venv inside a Docker
+container.
+
+*High level architecture*
+```
+Docker
+    Venv ( python virtual environment )
+        Flask ( micro-framework )
+
+```
+
+## Development
+
+### Host Requirements
+* python 3.6 ( this is just needed to create the virtual environment )
+* make
+
+### Installation
+*This will create a virtual environment, activate the environment, then installs
+dependencies*
 `make install`
 
-## Installing a python package process
-`make package PACKAGE=Django`
+### Installing a python package
+*Please use this command instead of using pip. This can be run inside or outside the activated virtual environment. This script is a benefit as it freezes requirements into > requirements.txt*
+`make package p=<package>`
 
-## Start a container
+### Running a container
+*This will run the script defined in `docker-compose.yml`. It is important to 
+note that this script will create a volume pointing to your local source code and
+`.env` folder*
+
 `docker-compose up -d server`
 
 
-# dev/stg/prod
+## Deployment Notes <to be finished>
+*This is a bit of a different path than running `docker-compose` as this uses
+the `Dockerfile` to take advantage of the `COPY` command so that these images can 
+contain all of the source necessary to self execute w/ out volumes.*
 
-## build an image
+### build an image
 `docker build -t <img-tag> .`
 
-## start a container
+### start a container
 `docker run -d --name <container-name> -p 3000:5000 <img-tag>`
 
+## Versioning
+We use SemVer for versioning.
 
 
+## Author
+* Carlos Pliego *@carlosjpliego*
 
-
-
-
-
-#Requirements
-Python 3.6^
-
-
-## Install Requirements
-`make install`
-
-## Activate Environment
-`. .env/bin/activate`
-
-## Install package and save requirements ( do this inside the environment )
-`pip3 install package`
-`pip3 freeze > requirements.txt`
-
-
-
-
-Install dependencies
-## vendor:
-	docker-compose run --rm vendors
-
-## run
-	docker-compose up -d server
