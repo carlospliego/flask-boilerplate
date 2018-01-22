@@ -27,7 +27,9 @@ brew link --force gettext
 ### Installation
 *This will first create the necesary make and docker files This will also create a virtual environment, activate the environment, then installs
 dependencies*
-`source configs/env.sh; rm -rf makefile; envsubst < "configs/makefile_template" > "makefile" && make install-local`
+```
+source configs/env.sh; rm -rf makefile; envsubst < "configs/makefile_template" > "makefile" && make install-local
+```
 
 ### Installing a python package
 *Please use this command instead of using pip. This can be run inside or outside the activated virtual environment. This script is a benefit as it freezes requirements into > requirements.txt*
