@@ -6,5 +6,6 @@ docker-compose.yml
 dev.Dockerfile
 prod.Dockerfile
 makefile
+.dockerignore
 
 
