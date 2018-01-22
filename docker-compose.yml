@@ -1,14 +1,3 @@
-# vendors:
-#   image: python:3.6.4
-#   working_dir: /mnt
-#   volumes:
-#     - .:/mnt
-#   environment:
-#     PYTHONUSERBASE: /mnt/.env
-#   command: pip install -r requirements.txt --user --upgrade
-
-
-# since there is a mount this is for local purposes only
 server:
   image: python:3.6.4
   working_dir: /mnt
