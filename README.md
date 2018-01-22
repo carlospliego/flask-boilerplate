@@ -25,8 +25,8 @@ brew link --force gettext
 ```
 
 ### Installation
-*This will first create the necesary make and docker files and will also create a virtual environment, 
-activate the environment, then installs dependencies*
+*This will first create the necesary make and docker files This will also create a virtual environment, activate the environment, then installs
+dependencies*
 `make -f init.make && make install`
 
 ### Installing a python package
