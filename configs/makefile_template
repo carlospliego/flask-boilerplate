@@ -10,6 +10,7 @@ install-local:
 	source configs/env.sh; rm -rf docker-compose.yml; envsubst < "configs/docker_templates/docker-compose.yml" > "docker-compose.yml";
 	source configs/env.sh; rm -rf dev.Dockerfile; envsubst < "configs/docker_templates/dev.Dockerfile" > "dev.Dockerfile";
 	source configs/env.sh; rm -rf prod.Dockerfile; envsubst < "configs/docker_templates/prod.Dockerfile" > "prod.Dockerfile";
+	source configs/env.sh; rm -rf .dockerignore; envsubst < "configs/docker_templates/.dockerignore" > ".dockerignore";
 	rm -rf $(VENV_DIR)/
 	rm -f $(ENV_FILE)
 	$(CREATE_VIRTUAL_ENV)
