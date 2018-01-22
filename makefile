@@ -2,11 +2,23 @@ PYTHON = .env/bin/python3
 PIP = pip3
 ENV = . .env/bin/activate
 
-oldinstall:
-	python3 -m venv .env
+install:
+	virtualenv .env
 	$(ENV) && $(PIP) install -r requirements.txt && deactivate # install dependencies
-	cp example.env_ .env_
+	# docker-compose run vendors
 
+
+package:
+	# `. .env/bin/activate`
+	# `pip install <package>`
+	# `pip freeze > requirements.txt`
+	# `docker-compose run --rm vendors`
+	# `deactivate`
+	
+	# access parameters
+	
+	$(ENV) && $(PIP) install $(PACKAGE)
+	$(ENV) && $(PIP) freeze > requirements.txt
 
 
 

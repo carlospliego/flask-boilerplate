@@ -1,12 +1,14 @@
-vendors:
-  image: python:3.6.4
-  working_dir: /mnt
-  volumes:
-    - .:/mnt
-  environment:
-    PYTHONUSERBASE: /mnt/vendor
-  command: pip install -r requirements.txt --user --upgrade
+# vendors:
+#   image: python:3.6.4
+#   working_dir: /mnt
+#   volumes:
+#     - .:/mnt
+#   environment:
+#     PYTHONUSERBASE: /mnt/.env
+#   command: pip install -r requirements.txt --user --upgrade
 
+
+# since there is a mount this is for local purposes only
 server:
   image: python:3.6.4
   working_dir: /mnt
@@ -15,7 +17,10 @@ server:
   ports:
     - '3000:5000'
   environment:
-    PYTHONPATH: src
-    PYTHONUSERBASE: /mnt/vendor
+    PYTHONUSERBASE: /mnt/.env
     FLASK_DEBUG: 1
   command: python src/server.py
+
+
+
+

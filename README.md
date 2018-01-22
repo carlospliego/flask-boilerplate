@@ -1,4 +1,29 @@
 
+# Local Dev
+## Install
+`make install`
+
+## Installing a python package process
+`make package PACKAGE=Django`
+
+## Start a container
+`docker-compose up -d server`
+
+
+# dev/stg/prod
+
+## build an image
+`docker build -t <img-tag> .`
+
+## start a container
+`docker run -d --name <container-name> -p 3000:5000 <img-tag>`
+
+
+
+
+
+
+
 
 #Requirements
 Python 3.6^
@@ -17,8 +42,9 @@ Python 3.6^
 
 
 
-vendor:
+Install dependencies
+## vendor:
 	docker-compose run --rm vendors
 
-run:
+## run
 	docker-compose up -d server
