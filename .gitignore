@@ -1,7 +1,7 @@
 .vscode/
 .virtual/
 .env
-src/__pycache__
+__pycache__
 docker-compose.yml
 dev.Dockerfile
 prod.Dockerfile
