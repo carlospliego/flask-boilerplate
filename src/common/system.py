@@ -1,24 +1,16 @@
 from flask import Flask
-from flask_pymongo import PyMongo
 
-
-_app = Flask(__name__)
-_mongo = None
-def create_mongo():
-    global _mongo
-    _mongo = PyMongo(_app)
-    return None
-
-def get_mongo():
-    return _mongo
+app = None
 
 def create_app():
+    global app
+    app = Flask(__name__)
     # if you change host you must also change the running database name too
-    _app.config['MONGO_HOST'] = 'mongodb'
+    # app.config['MONGO_HOST'] = 'mongodb'
 
-    _app.config['MONGO_DBNAME'] = 'flask'
+    # app.config['MONGO_DBNAME'] = 'flask'
     
     from accounts.views import accounts_app
-    _app.register_blueprint(accounts_app)
-
-    return _app
+    app.register_blueprint(accounts_app)
+    
+    return app

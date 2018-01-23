@@ -1,16 +1,20 @@
 from flask import (
     Blueprint, Response
 )
-from bson.json_util import dumps 
-from flask_pymongo import PyMongo
-from common.system import create_mongo, get_mongo
-create_mongo()
-mongo = get_mongo()
+from mongoengine import *
+from common.system import app
+
+# host needs to be mongodb
+connect('flask', host='mongodb')
+
+class User(Document):
+    first = StringField(required=True)
+    last = StringField()
 
 accounts_app = Blueprint('accounts_app', __name__)
 
 @accounts_app.route('/')
 def hello():
-    users = mongo.db.user.find({'first':'Carlos'})
-    resp = Response(dumps(users), status=200, mimetype='application/json')
+    users = User.objects.all().exclude("id")
+    resp = Response(users.to_json(), status=200, mimetype='application/json')
     return resp 
