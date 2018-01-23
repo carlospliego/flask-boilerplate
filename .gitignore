@@ -7,3 +7,4 @@ dev.Dockerfile
 prod.Dockerfile
 makefile
 .dockerignore
+data/

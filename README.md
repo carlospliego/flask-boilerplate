@@ -52,7 +52,15 @@ contain all of the source necessary to self execute w/ out volumes.*
 `docker build -t <img-tag> . -f <Dockerfile>`
 
 ### start a container
-`docker run -d --name <container-name> -p 3001:5000 <img-tag>`
+`docker run -d --name flask-app -p 3001:5000 <img-tag>`
+
+## Mongo
+`docker pull mongo`
+`docker run -d --name mongodb mongo`
+### using compose
+
+### using Dockerfile
+`docker run --name flask-app -d -p <ports> --link mongodb flask-app`
 
 ## Versioning
 We use SemVer for versioning.
