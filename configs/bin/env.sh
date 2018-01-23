@@ -13,7 +13,7 @@ export DEV_WORKING_DIR=/opt/app
 export LOCAL_PORTS='3000:5000'
 
 # non local port
-export NON_LOCAL_PORT=3001
+export DEV_SERVER_PORT=3001
 
 # runtime environment file
 export ENV_FILE=.env
