@@ -72,6 +72,9 @@ since the service container depends on the database, you'll want to run this fir
 notice the linking
 `docker run -d --name flask-app -p <ports> --link mongodb <img-tag>`
 
+### Running Mongo In Shell
+`docker exec -it <container-id> mongo`
+
 
 
 ## Versioning

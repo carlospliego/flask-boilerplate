@@ -1,7 +1,7 @@
 from flask import Flask, Response
 from flask_pymongo import PyMongo
 from bson.json_util import dumps 
-from system import create_app
+from common.system import create_app
 
 app = create_app()
 # sys = System()

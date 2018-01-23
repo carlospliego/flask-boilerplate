@@ -13,7 +13,9 @@ def get_mongo():
     return _mongo
 
 def create_app():
+    # if you change host you must also change the running database name too
     _app.config['MONGO_HOST'] = 'mongodb'
+
     _app.config['MONGO_DBNAME'] = 'flask'
     
     from accounts.views import accounts_app

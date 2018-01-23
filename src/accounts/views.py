@@ -3,7 +3,7 @@ from flask import (
 )
 from bson.json_util import dumps 
 from flask_pymongo import PyMongo
-from system import create_mongo, get_mongo
+from common.system import create_mongo, get_mongo
 create_mongo()
 mongo = get_mongo()
 
