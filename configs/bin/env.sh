@@ -24,11 +24,11 @@ export PIP=pip3
 # virtual environment folder
 export VENV_FOLDER=.virtual
 
-# pip requirements
+# pip requirements file
 export PIP_REQS=requirements.txt
 
 # application entry point
-export ENTRYPOINT=src/server.py
+export ENTRYPOINT=src/run.py
 
-# env configs
+# env configs folder
 export ENV_CONFIGS=configs/env
