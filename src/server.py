@@ -3,21 +3,15 @@ from flask_pymongo import PyMongo
 from bson.json_util import dumps 
 
 app = Flask(__name__)
+
+# database stuff
 app.config['MONGO_HOST'] = 'mongodb'
 app.config['MONGO_DBNAME'] = 'flask'
-
 mongo = PyMongo(app)
-
-# with app.app_context():
-#     users = mongo.db.users.find({'name':'Carlos'})
-#     for u in users:
-#         print(u)
 
 @app.route('/')
 def hello():
-    users = mongo.db.user.find({'first':'Carlos'}) 
-    # print('effort')
-    # print(dumps(users)) 
+    users = mongo.db.user.find({'first':'Carlos'})
     resp = Response(dumps(users), status=200, mimetype='application/json')
     return resp 
 
