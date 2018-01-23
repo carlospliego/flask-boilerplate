@@ -4,7 +4,7 @@
 A Python boilerplate for services using Flask, wrapped in venv inside a Docker
 container.
 
-*High level architecture*
+*Runtime architecture*
 ```
 Docker
     Venv ( python virtual environment )
@@ -17,19 +17,15 @@ Docker
 ### Host Requirements
 * python 3.6 ( this is just needed to create the virtual environment )
 * make
-* gettext
-```
-brew install gettext
-brew link --force gettext
+* gettext `brew install gettext && brew link --force gettext`
 
-```
 
 ### Installation
 *This will first create the necesary make and docker files This will also create a virtual environment, activate the environment, then installs
 dependencies*
-```
-sh ./configs/bin/init.sh && make install-local
-```
+
+`sh ./configs/bin/init.sh && make install-local`
+
 
 ### Installing a python package
 *Please use this command instead of using pip. This can be run inside or outside the activated virtual environment. This script is a benefit as it freezes requirements into > requirements.txt*
@@ -40,27 +36,43 @@ sh ./configs/bin/init.sh && make install-local
 note that this script will create a volume pointing to your local source code and
 `.venv` folder*
 
-`docker-compose up -d server`
+`docker-compose up`
 
 
-## Deployment Notes <to be finished>
+## Deployment
 *This is a bit of a different path than running `docker-compose` as this uses
 the `Dockerfile` to take advantage of the `COPY` command so that these images can 
 contain all of the source necessary to self execute w/ out volumes.*
 
-### build an image
+### Strategy
+Get an instance of mongo from DockerHub
+`docker pull mongo`
+
+Create a mongo container called mongodb
+`docker run --name mongodb -d -v $(pwd)/data/db:/data/db mongo`
+
+Build or checkout your image
 `docker build -t <img-tag> . -f <Dockerfile>`
 
-### start a container
-`docker run -d --name flask-app -p 3001:5000 <img-tag>`
+Run a container, linking it to mongodb
+`docker run --name <container-name> -d -p <ports> --link mongodb <img-tag>`
 
-## Mongo
-`docker pull mongo`
-`docker run -d --name mongodb mongo`
-### using compose
 
-### using Dockerfile
-`docker run --name flask-app -d -p <ports> --link mongodb flask-app`
+## Common Docker
+
+### Build Image
+`docker build -t <img-tag> . -f <Dockerfile>`
+
+### Running a container
+#### Database
+since the service container depends on the database, you'll want to run this first
+`docker run --name mongodb -d -v $(pwd)/data/db:/data/db mongo`
+
+#### Service
+notice the linking
+`docker run -d --name flask-app -p <ports> --link mongodb <img-tag>`
+
+
 
 ## Versioning
 We use SemVer for versioning.
