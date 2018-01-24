@@ -2,6 +2,7 @@
     Send authorization token in header as Authorization : Bearer <token>
 
 """
+from mongoengine.errors import NotUniqueError
 from flask import (
     Blueprint, Response, request, jsonify
 )
@@ -12,6 +13,10 @@ from passlib.hash import pbkdf2_sha256
 from flask_jwt_extended import (
     JWTManager, jwt_required, create_access_token
 )
+
+
+
+from botocore.exceptions import ClientError
 
 # Setup the accounts blueprint
 accounts_app = Blueprint('accounts_app', __name__)
@@ -37,34 +42,27 @@ def index():
 # get for testing now
 @accounts_app.route('/signup', methods=['POST'])
 def signup():
+    """docstring"""
+
+    # todo implement decorator for is json
     # validate incoming json
     if not request.is_json:
         # todo make messaging interface
         return jsonify({"msg": "Missing Json in request"}), 400
 
-    # todo make primary keys in the models.
-    """docstring"""
 
-    # TODO enable re-captcha
+
     # TODO create a common library for messages
 
-    # todo make funcion a post
     username = request.json.get('username', None)
     password = request.json.get('password', None)
     first = request.json.get('first', None)
     last = request.json.get('last', None)
 
-    user = User.objects(username=username)
-
-    # check if user exists
-    if not user:
-        # user doesn't exist
+    try:
         user = User(username=username, first=first, last=last, password=password)
-
         user.save()
-    else:
-        # username is already taken TODO create function that checks if a username exists or not: UX could have a username text area that could ping this backend.
-        #todo put this
+    except NotUniqueError:
         return "username is already taken"
 
     return str(User.objects.count())
