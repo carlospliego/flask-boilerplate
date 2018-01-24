@@ -35,16 +35,25 @@ def index():
 
 
 # get for testing now
-@accounts_app.route('/signup', methods=['GET'])
+@accounts_app.route('/signup', methods=['POST'])
 def signup():
+    # validate incoming json
+    if not request.is_json:
+        return jsonify({"msg": "Missing Json in request"}), 400
 
     # todo make primary keys in the models.
     """docstring"""
 
-    username = "mikeb"
-    password = "dave123"
-    first = "Michael"
-    last = "Black"
+    # TODO enable re-captcha
+    # TODO create a common library for messages
+
+    # todo make funcion a post
+    username = request.json.get('username', None)
+    password = request.json.get('password', None)
+    first = request.json.get('first', None)
+    last = request.json.get('last', None)
+
+
 
     user = User.objects(username=username)
 
@@ -56,7 +65,7 @@ def signup():
         user.save()
     else:
         # username is already taken TODO create function that checks if a username exists or not: UX could have a username text area that could ping this backend.
-        return
+        return ""
 
     return str(User.objects.count())
 
