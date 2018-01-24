@@ -3,22 +3,25 @@
 
 """
 from flask import (
-    Blueprint, Response, request, jsonify, current_app
+    Blueprint, Response, request, jsonify
 )
 
 from common.system import app
 from accounts.models import User
 from passlib.hash import pbkdf2_sha256
 from flask_jwt_extended import (
-    JWTManager, jwt_required, create_access_token,
-    get_jwt_identity
+    JWTManager, jwt_required, create_access_token
 )
 
-
+# Setup the accounts blueprint
 accounts_app = Blueprint('accounts_app', __name__)
 
-# Setup the Flask-JWT-Extended extension
+# TODO move hashing to the user model
+# TODO move this to a configuration file.
+# TODO change 'accounts_app' to 'authorization' or something
 app.config['JWT_SECRET_KEY'] = 'super-secret'  # Change this!
+
+# Initialize the JWT Manager for the applciation
 jwt = JWTManager(app)
 
 
@@ -37,17 +40,23 @@ def signup():
 
     # todo make primary keys in the models.
     """docstring"""
-    username = "awesomedave"
+
+    username = "mikeb"
+    password = "dave123"
+    first = "Michael"
+    last = "Black"
+
     user = User.objects(username=username)
- 
+
+    # check if user exists
     if not user:
         # user doesn't exist
-        password = "dave123"
-
-        password_hash = pbkdf2_sha256.encrypt(password, rounds=80, salt_size=8)
-        user = User(username=username, first="Dave", last="Roberts", password=password_hash)
+        user = User(username=username, first=first, last=last, password=password)
 
         user.save()
+    else:
+        # username is already taken TODO create function that checks if a username exists or not: UX could have a username text area that could ping this backend.
+        return
 
     return str(User.objects.count())
 
