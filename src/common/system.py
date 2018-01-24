@@ -10,7 +10,9 @@ def create_app():
     
     from accounts.views import accounts_app
     app.register_blueprint(accounts_app)
-    
+
+    app.config['JWT_SECRET_KEY'] = 'super-secret'  # Change this!
+
     return app
 
 

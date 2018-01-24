@@ -5,7 +5,7 @@
 from flask import (
     Blueprint, Response, request, jsonify
 )
-
+# todo note install pip with install -U module...
 from common.system import app
 from accounts.models import User
 from passlib.hash import pbkdf2_sha256
@@ -16,10 +16,10 @@ from flask_jwt_extended import (
 # Setup the accounts blueprint
 accounts_app = Blueprint('accounts_app', __name__)
 
-# TODO move hashing to the user model
 # TODO move this to a configuration file.
 # TODO change 'accounts_app' to 'authorization' or something
-app.config['JWT_SECRET_KEY'] = 'super-secret'  # Change this!
+# TODO protect against known security vulnerabilities
+
 
 # Initialize the JWT Manager for the applciation
 jwt = JWTManager(app)
@@ -39,6 +39,7 @@ def index():
 def signup():
     # validate incoming json
     if not request.is_json:
+        # todo make messaging interface
         return jsonify({"msg": "Missing Json in request"}), 400
 
     # todo make primary keys in the models.
@@ -53,8 +54,6 @@ def signup():
     first = request.json.get('first', None)
     last = request.json.get('last', None)
 
-
-
     user = User.objects(username=username)
 
     # check if user exists
@@ -65,7 +64,8 @@ def signup():
         user.save()
     else:
         # username is already taken TODO create function that checks if a username exists or not: UX could have a username text area that could ping this backend.
-        return ""
+        #todo put this
+        return "username is already taken"
 
     return str(User.objects.count())
 

@@ -1,13 +1,7 @@
 from mongoengine import *
 
 from passlib.hash import pbkdf2_sha256
-import jwt
-import datetime
 
-#todo note install pip with install -U module...
-
-# class BaseModel(Document):
-    
 
 class User(Document):
     username = StringField()
