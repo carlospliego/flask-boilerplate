@@ -1,31 +1,16 @@
-# third party modules should be placed first
 from mongoengine.errors import NotUniqueError, ValidationError
 from flask import (
-    Blueprint, Response, request, jsonify
+    Blueprint, request, jsonify
 )
 from passlib.hash import pbkdf2_sha256
-from flask_jwt_extended import (
-    jwt_required, create_access_token
-)
-
-# common modules should be placed last
-from common.accounts.models import User
+from flask_jwt_extended import create_access_token
+from models.user import User
 from common.decorators import json_only
 
-# declare your blueprint
-accounts_app = Blueprint('accounts_app', __name__)
+auth = Blueprint('auth', __name__)
 
 
-@accounts_app.route('/users')
-@jwt_required
-def index():
-    users = User.objects.all().exclude("id")
-    resp = Response(users.to_json(), status=200, mimetype='application/json')
-
-    return resp 
-
-
-@accounts_app.route('/signup', methods=['POST'])
+@auth.route('/signup', methods=['POST'])
 @json_only
 def signup():
 
@@ -43,7 +28,7 @@ def signup():
     return str(User.objects.count())
 
 
-@accounts_app.route('/login', methods=['POST'])
+@auth.route('/login', methods=['POST'])
 @json_only
 def login():
 
@@ -62,9 +47,3 @@ def login():
     access_token = create_access_token(identity=login_data['password'])
 
     return jsonify(access_token=access_token), 200
-
-
-@accounts_app.route('/protected', methods=['GET'])
-@jwt_required
-def protected():
-    return "you made it"

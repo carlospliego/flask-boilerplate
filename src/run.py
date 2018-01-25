@@ -1,4 +1,4 @@
-from common.system import create_app, connect_db
+from system import create_app, connect_db
 
 app = create_app()
 connect_db('flask', 'mongodb')

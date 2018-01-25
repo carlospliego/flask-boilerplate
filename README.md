@@ -76,16 +76,8 @@ notice the linking
 `docker exec -it <container-id> mongo`
 
 
-
-## Rules on packages
-* a package can import third party installations in `.virtual`
-* a package can import from inside the package
-* a package can import from outside the package ( if the package exists inside the [common] package )
-* the [common] package and all sub packages can not import outside of the [common] package unless that package is a third party located in `.virtual`
-
 ## Versioning
 We use SemVer for versioning.
-
 
 ## Author
 * Carlos Pliego *@carlosjpliego*
