@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # the base python image
-export BASE_IMG=python:3.6.4
+BASE_IMG=python:3.6.4
 
 # the directory to mount a volume with docker-compose
 export MNT_WORKING_DIR=/mnt

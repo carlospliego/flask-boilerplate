@@ -18,12 +18,9 @@ Docker
 * python 3.6 ( this is just needed to create the virtual environment )
 * make
 * gettext `brew install gettext && brew link --force gettext`
-* npm, node ( some version )
 
 
 ### Installation
-*install node_modules*
-`npm install`
 
 *This will first create the necesary make and docker files This will also create a virtual environment, activate the environment, then installs
 dependencies*
