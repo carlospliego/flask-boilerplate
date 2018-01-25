@@ -19,10 +19,8 @@ from flask_jwt_extended import (
 accounts_app = Blueprint('accounts_app', __name__)
 
 
-# TODO change 'accounts_app' to 'authorization' or something
-
-
 @accounts_app.route('/users')
+@jwt_required
 def index():
     users = User.objects.all().exclude("id")
     resp = Response(users.to_json(), status=200, mimetype='application/json')
@@ -30,7 +28,6 @@ def index():
     return resp 
 
 
-# get for testing now
 @accounts_app.route('/signup', methods=['POST'])
 @json_only
 def signup():
