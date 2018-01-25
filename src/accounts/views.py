@@ -12,26 +12,19 @@ from common.decorators import json_only
 from accounts.models import User
 from passlib.hash import pbkdf2_sha256
 from flask_jwt_extended import (
-    JWTManager, jwt_required, create_access_token
+    jwt_required, create_access_token
 )
 
 
 # Setup the accounts blueprint
 accounts_app = Blueprint('accounts_app', __name__)
 
-# TODO move this to a configuration file.
+
 # TODO change 'accounts_app' to 'authorization' or something
-# TODO protect against known security vulnerabilities
-# todo csrf
-
-
-# Initialize the JWT Manager for the applciation
-jwt = JWTManager(app)
 
 
 @accounts_app.route('/users')
 def index():
-    """docstring"""
     users = User.objects.all().exclude("id")
     resp = Response(users.to_json(), status=200, mimetype='application/json')
 
@@ -42,9 +35,7 @@ def index():
 @accounts_app.route('/signup', methods=['POST'])
 @json_only
 def signup():
-    """docstring"""
 
-    # leave validation logic to the models
     signup_data = request.get_json()
 
     try:

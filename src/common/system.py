@@ -1,5 +1,7 @@
 from flask import Flask
 from mongoengine import *
+from flask_jwt_extended import JWTManager
+
 
 app = None
 
@@ -13,6 +15,7 @@ def create_app():
 
     app.config['JWT_SECRET_KEY'] = 'super-secret'  # Change this!
 
+    JWTManager(app)
     return app
 
 
