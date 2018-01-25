@@ -9,3 +9,4 @@ prod.Dockerfile
 makefile
 .dockerignore
 data/
+node_modules/
