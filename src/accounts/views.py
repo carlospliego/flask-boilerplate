@@ -6,8 +6,7 @@ from mongoengine.errors import NotUniqueError, ValidationError
 from flask import (
     Blueprint, Response, request, jsonify
 )
-# todo note install pip with install -U module...
-from common.system import app
+
 from common.decorators import json_only
 from accounts.models import User
 from passlib.hash import pbkdf2_sha256
