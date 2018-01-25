@@ -15,7 +15,6 @@ from flask_jwt_extended import (
 )
 
 
-# Setup the accounts blueprint
 accounts_app = Blueprint('accounts_app', __name__)
 
 
