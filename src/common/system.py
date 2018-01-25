@@ -10,10 +10,10 @@ def create_app():
     global app
     app = Flask(__name__)
     
-    from accounts.views import accounts_app
+    from common.accounts.views import accounts_app
     app.register_blueprint(accounts_app)
 
-    app.config['JWT_SECRET_KEY'] = 'super-secret'  # Change this!
+    app.config['JWT_SECRET_KEY'] = 'super-secret'  # Change this! reference config object
 
     JWTManager(app)
     return app

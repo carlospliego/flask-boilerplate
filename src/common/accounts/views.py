@@ -1,20 +1,18 @@
-"""
-    Send authorization token in header as Authorization : Bearer <token>
-
-"""
+# third party modules should be placed first
 from mongoengine.errors import NotUniqueError, ValidationError
 from flask import (
     Blueprint, Response, request, jsonify
 )
-
-from common.decorators import json_only
-from accounts.models import User
 from passlib.hash import pbkdf2_sha256
 from flask_jwt_extended import (
     jwt_required, create_access_token
 )
 
+# common modules should be placed last
+from common.accounts.models import User
+from common.decorators import json_only
 
+# declare your blueprint
 accounts_app = Blueprint('accounts_app', __name__)
 
 

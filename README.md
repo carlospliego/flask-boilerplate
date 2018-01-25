@@ -77,6 +77,12 @@ notice the linking
 
 
 
+## Rules on packages
+Packages can
+* import third party installations in `.virtual`
+* import from inside the package
+* import from outside the package ( if the package exists inside the [common] package )
+
 ## Versioning
 We use SemVer for versioning.
 

@@ -1,6 +1,6 @@
+# third party modules should be placed first
 from mongoengine import *
 from datetime import datetime
-
 from passlib.hash import pbkdf2_sha256
 
 
