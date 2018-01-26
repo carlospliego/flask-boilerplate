@@ -3,6 +3,5 @@
 .virtual/
 .env
 __pycache__
-.dockerignore
 data/
 node_modules/
