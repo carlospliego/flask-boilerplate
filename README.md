@@ -30,7 +30,7 @@ dependencies*
 
 ### Installing a python package
 *Please use this command instead of using pip. This can be run inside or outside the activated virtual environment. This script is a benefit as it freezes requirements into > requirements.txt*
-`make package p=<package>`
+`./dev/pip install <package>`
 
 ### Running a container
 *This will run the script defined in `docker-compose.yml`. It is important to 

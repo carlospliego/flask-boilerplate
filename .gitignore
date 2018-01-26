@@ -3,9 +3,6 @@
 .virtual/
 .env
 __pycache__
-docker-compose.yml
-dev.Dockerfile
-prod.Dockerfile
-makefile
 .dockerignore
 data/
+node_modules/

@@ -1,0 +1,28 @@
+version: '2'
+services:
+  server:
+    image: python:3.6.4
+    working_dir: /mnt
+    volumes:
+      - .:/mnt
+    ports:
+      - 3000:5000
+    env_file:
+      - .env
+    links:
+      - mongodb
+    depends_on:
+      - mongodb
+    command: python src/run.py
+    
+  mongodb:
+    image: mongo:latest
+    container_name: "mongodb"
+    environment:
+            - MONGO_DATA_DIR=/data/db
+            - MONGO_LOG_DIR=/dev/null
+    volumes:
+      - ./data/db:/data/db
+    ports:
+        - 27017:27017
+    command: mongod --logpath=/dev/null #--smallfiles --logpath=/dev/null # --quiet
