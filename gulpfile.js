@@ -26,6 +26,3 @@ gulp.task('test', shell.task([
   'source .virtual/bin/activate && python -m unittest discover -s src\n'
 ].join('')));
 
-// discover -s src -p "*.test.py" 
-
-
