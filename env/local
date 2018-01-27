@@ -1,2 +1,5 @@
 PYTHONUSERBASE=/mnt/.virtual
 FLASK_DEBUG=1
+
+LC_ALL=en_US.utf-8 
+LANG=en_US.utf-8
