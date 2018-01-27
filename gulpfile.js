@@ -9,6 +9,7 @@ const create_virtual_environment = [
 const create_local_runtime_variables = [
   'cp ./env/local .env\n'
 ];
+
 gulp.task('install', shell.task([].concat(
   create_virtual_environment,
   create_local_runtime_variables
@@ -16,13 +17,15 @@ gulp.task('install', shell.task([].concat(
 
 gulp.task('pip', shell.task((function pip(){
   if(process.argv[3]=='-i'){
-    // install 4th element
-    return 'source .virtual/bin/activate && pip install '+process.argv[4] + ' && deactivate';
+    return 'source .virtual/bin/activate && pip install '
+      +process.argv[4] + ' && deactivate';
   }
 }())));
 
 gulp.task('test', shell.task([
-  'echo "testing not setup yet"'
+  'source .virtual/bin/activate && python -m unittest discover -s src\n'
 ].join('')));
+
+// discover -s src -p "*.test.py" 
 
 
