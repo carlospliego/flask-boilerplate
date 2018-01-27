@@ -18,7 +18,7 @@ gulp.task('install', shell.task([].concat(
 gulp.task('pip', shell.task((function pip(){
   if(process.argv[3]=='-i'){
     return 'source .virtual/bin/activate && pip install '
-      +process.argv[4] + ' && deactivate';
+      +process.argv[4] + ' && pip freeze > requirements.txt && deactivate';
   }
 }())));
 
