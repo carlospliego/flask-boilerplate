@@ -5,6 +5,7 @@ from passlib.hash import pbkdf2_sha256
 
 
 # todo put this in a system package
+# todo create an interface maybe?
 class Model(Document):
 
     created = DateTimeField()
@@ -18,6 +19,8 @@ class Model(Document):
             self.created = datetime.now()
         self.updated = datetime.now()
         return super(Model, self).save(*args, **kwargs)
+
+    # get where q?
 
 
 class User(Model):
