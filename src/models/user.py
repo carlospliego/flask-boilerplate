@@ -20,7 +20,6 @@ class Model(Document):
         self.updated = datetime.now()
         return super(Model, self).save(*args, **kwargs)
 
-    # get where q?
 
 
 class User(Model):
@@ -30,9 +29,21 @@ class User(Model):
     last = StringField()
     password = StringField()
 
+
     def clean(self):
         if self.password:
             self.password = pbkdf2_sha256.encrypt(self.password, rounds=80, salt_size=8)
 
+    # super(Foo, self)
+    # def q(self, *args, **kwargs):
+    #     import json
+    #     # User.objects(__raw__=json.loads(q)).exclude("id") #?q={"username":"carlos2"}
+    #     return User.objects(__raw__={"username":"carlos1"})
+    #     # return super(User, self).objects.all()
 
-
+    # def q(self, *args, **kwargs):
+    #     import json
+    #     # User.objects(__raw__=json.loads(q)).exclude("id") #?q={"username":"carlos2"}
+    #     # return super(User, self).objects(__raw__={"username":"carlos1"})
+    #     # return super(User, self).objects.all()
+    #     return __class__.objects(*args, **kwargs)
