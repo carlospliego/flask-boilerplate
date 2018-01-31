@@ -5,39 +5,16 @@ from flask import (
 )
 from flask_jwt_extended import jwt_required
 from models.user import User
+from common.decorators import paginated
+
 import json
 
 user = Blueprint('user', __name__)
 
-
-
-# todo make a decorator
-def handle_pagination_request(request):
-    _page = request.args.get('page')
-    _limit = request.args.get('limit')
-    _default_page = 1  # put in some sort of constant
-    _default_items = 10  # put in some sort of constant
-
-    page = int(_default_page if not _page else _page)
-    limit = int(_default_items if not _limit else _limit)
-    offset = (page - 1) * limit
-
-    return {'offset':offset, 'limit': limit}
-
-def handle_query_json_parse():
-    pass
-
-
 @user.route('/search', methods=['GET'])
 @jwt_required
-def query():
-
-    ## can become part of the decorator
-    try:
-        pag = handle_pagination_request(request)
-    except ValueError:
-        return Response(json.dumps({'msg': 'could not parse page and limit'}), 400, mimetype='application/json')
-    ## can become part of the decorator
+@paginated
+def query(pag):
 
     _q = request.args.get('q')
 
