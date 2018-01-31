@@ -11,6 +11,7 @@ user = Blueprint('user', __name__)
 @user.route('/search', methods=['GET'])
 @composed(jwt_required, paginated, query, json_res)
 def query(pag, q):
+
     users = User.objects(
         __raw__=q
     ).skip(pag['offset']).limit(pag['limit']).exclude("id", "password")
@@ -21,5 +22,7 @@ def query(pag, q):
 @user.route('/', methods=['GET'])
 @composed(jwt_required, paginated, json_res)
 def index(pag):
+
     users = User.objects.all().skip(pag['offset']).limit(pag['limit']).exclude("id", "password")
+    
     return users.to_json(), 200
