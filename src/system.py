@@ -8,7 +8,6 @@ app = None
 
 api = None
 
-##todo PICKUP here https://flask-restful.readthedocs.io/en/latest/quickstart.html
 
 def create_app():
     global app
@@ -25,16 +24,7 @@ def create_app():
     from views.auth import auth
     app.register_blueprint(auth, url_prefix='/auth')
 
-
-    ### HERE
-    class HelloWorld(Resource):
-        def get(self):
-            return {'hello': 'world'}
-
-    api.add_resource(HelloWorld, '/')
-
-    # load settings
-    app.config = {**app.config, **SETTINGS}
+    app.config = {**app.config, **SETTINGS}  # load settings
 
     JWTManager(app)
     return app
