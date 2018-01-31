@@ -8,7 +8,7 @@ from common.decorators import paginated, query, composed, json_res
 user = Blueprint('user', __name__)
 
 
-@user.route('/search', methods=['GET'])
+@user.route('/where', methods=['GET'])
 @composed(jwt_required, paginated, query, json_res)
 def query(pag, q):
 
@@ -24,5 +24,5 @@ def query(pag, q):
 def index(pag):
 
     users = User.objects.all().skip(pag['offset']).limit(pag['limit']).exclude("id", "password")
-    
+
     return users.to_json(), 200
