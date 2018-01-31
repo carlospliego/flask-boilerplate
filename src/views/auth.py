@@ -5,13 +5,13 @@ from flask import (
 from passlib.hash import pbkdf2_sha256
 from flask_jwt_extended import create_access_token
 from models.user import User
-from common.decorators import json_only
+from common.decorators import json_only, composed, json_res
 
 auth = Blueprint('auth', __name__)
 
 
 @auth.route('/signup', methods=['POST'])
-@json_only
+@composed(json_only, json_res)
 def signup():
 
     signup_data = request.get_json()
@@ -25,11 +25,11 @@ def signup():
     except ValidationError as e:
         return jsonify({"msg":e.message})
 
-    return str(User.objects.count())
+    return user.to_json(), 200
 
 
 @auth.route('/login', methods=['POST'])
-@json_only
+@composed(json_only, json_res)
 def login():
 
     login_data = request.get_json()
