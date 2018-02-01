@@ -3,7 +3,7 @@ from flask import (
     Blueprint, request, jsonify
 )
 from passlib.hash import pbkdf2_sha256
-from flask_jwt_extended import create_access_token
+from flask_jwt_extended import create_access_token, jwt_required
 from models.user import User
 from common.decorators import json_only, composed, json_res
 
@@ -47,3 +47,8 @@ def login():
     access_token = create_access_token(identity=login_data['password'])
 
     return jsonify(access_token=access_token), 200
+
+@auth.route('/validate', methods=['POST'])
+@composed(json_only, json_res, jwt_required)
+def validate():
+    return jsonify({"msg":"authenticated"}), 200
