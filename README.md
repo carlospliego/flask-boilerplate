@@ -27,7 +27,11 @@ Database Docker Container
 
 ### Installation
 * `npm install`
-* `gulp install` 
+* `gulp install`
+
+
+### IDE Setup
+Make sure that your python interpreter is reading from the .virtual directory 
 
 ### Running
 
