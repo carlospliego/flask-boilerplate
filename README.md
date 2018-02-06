@@ -39,6 +39,10 @@ Running the application and database container. Modifying files will not refresh
 for these containers are on the host system
 `docker-compose up`
 
+### Unit Testing
+
+* `gulp unit`
+* `gulp unit-w`
 
 ## Deployment
 *This is a bit of a different path than running `docker-compose` as this uses

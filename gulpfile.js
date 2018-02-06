@@ -22,11 +22,11 @@ gulp.task('pip', shell.task((function pip(){
   }
 }())));
 
-gulp.task('test', shell.task([
+gulp.task('unit', shell.task([
   'source .virtual/bin/activate && python -m unittest discover -s src\n'
 ].join('')));
 
-gulp.task('test-watch', function(){
+gulp.task('unit-w', function(){
   gulp.watch('src/**/*.py', ['test'])
 });
 
