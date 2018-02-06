@@ -2,7 +2,7 @@ const gulp = require('gulp');
 const shell = require('gulp-shell');
 
 const create_virtual_environment = [
-  'virtualenv .virtual\n',
+  'virtualenv -p python3 .virtual\n',
   'source .virtual/bin/activate && pip install -r requirements.txt && deactivate\n'
 ];
 

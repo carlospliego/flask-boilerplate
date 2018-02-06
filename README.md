@@ -6,7 +6,7 @@ container.
 
 *Runtime architecture*
 ```
-Docker
+Docker Container
     Venv ( python virtual environment )
         Flask ( micro-framework )
 
@@ -16,8 +16,10 @@ Docker
 
 ### Host Requirements
 * python 3.6 ( this is just needed to create the virtual environment )
-* make
-* gettext `brew install gettext && brew link --force gettext`
+* virtualenv
+* node
+* npm install -g gulp
+* Docker CE
 
 
 ### Installation
