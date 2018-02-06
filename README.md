@@ -26,8 +26,8 @@ Database Docker Container
 * Docker CE
 
 ### Installation
-`npm install`
-`gulp install` 
+* `npm install`
+* `gulp install` 
 
 ### Running
 
