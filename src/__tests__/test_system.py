@@ -1,6 +1,5 @@
 import unittest
 from system import create_app, connect_db
-from pprint import pprint
 from pymongo import MongoClient
 
 

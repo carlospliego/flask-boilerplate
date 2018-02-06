@@ -26,7 +26,7 @@ gulp.task('unit', shell.task([
   'source .virtual/bin/activate && python -m unittest discover -s src\n'
 ].join('')));
 
-gulp.task('unit-w', function(){
-  gulp.watch('src/**/*.py', ['test'])
+gulp.task('w', function(){
+  gulp.watch('src/**/*.py', ['unit'])
 });
 
