@@ -10,4 +10,4 @@ class User(Model):
 
     def clean(self):
         if self.password:
-            self.password = pbkdf2_sha256.encrypt(self.password, rounds=80, salt_size=8)
+            self.password = pbkdf2_sha256.using(rounds=80, salt_size=8).hash(self.password)
