@@ -4,7 +4,6 @@
 A Python boilerplate for services using Flask, wrapped in venv inside a Docker
 container.
 
-
 *Runtime architecture*
 ```
 Application Service Container
