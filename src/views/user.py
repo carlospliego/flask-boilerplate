@@ -10,7 +10,7 @@ user = Blueprint('user', __name__)
 
 @user.route('/where', methods=['GET'])
 @composed(jwt_required, paginated, query, json_res)
-def query(pag, q):
+def where(pag, q):
 
     users = User.objects(
         __raw__=q
