@@ -6,39 +6,33 @@ container.
 
 *Runtime architecture*
 ```
-Docker Container
+Application Service Container
     Venv ( python virtual environment )
         Flask ( micro-framework )
+        
+Database Docker Container
+    ENV ( data reference to parent file system ) 
+    DBMS & tooling processes
 
 ```
 
 ## Development
 
 ### Host Requirements
-* python 3.6 ( this is just needed to create the virtual environment )
+* python 3.6^
 * virtualenv
 * node
 * npm install -g gulp
 * Docker CE
 
-
 ### Installation
+`npm install`
+`gulp install` 
 
-*This will first create the necesary make and docker files This will also create a virtual environment, activate the environment, then installs
-dependencies*
+### Running
 
-`sh ./scripts/init.sh && make reset`
-
-
-### Installing a python package
-*Please use this command instead of using pip. This can be run inside or outside the activated virtual environment. This script is a benefit as it freezes requirements into > requirements.txt*
-`./dev/pip install <package>`
-
-### Running a container
-*This will run the script defined in `docker-compose.yml`. It is important to 
-note that this script will create a volume pointing to your local source code and
-`.venv` folder*
-
+Running the application and database container. Modifying files will not refresh the container as the volumes 
+for these containers are on the host system
 `docker-compose up`
 
 
@@ -51,7 +45,7 @@ contain all of the source necessary to self execute w/ out volumes.*
 Get an instance of mongo from DockerHub
 `docker pull mongo`
 
-Create a mongo container called mongodb
+Create a MongoDB container called mongodb
 `docker run --name mongodb -d -v $(pwd)/data/db:/data/db mongo`
 
 Build or checkout your image
@@ -66,7 +60,7 @@ Run a container, linking it to mongodb
 ### Build Image
 `docker build -t <img-tag> . -f <Dockerfile>`
 
-### Running a container
+### Running a containers manually
 #### Database
 since the service container depends on the database, you'll want to run this first
 `docker run --name mongodb -d -v $(pwd)/data/db:/data/db mongo`
@@ -78,10 +72,9 @@ notice the linking
 ### Running Mongo In Shell
 `docker exec -it <container-id> mongo`
 
+### Running containers via docker-compose ( development only )
+`docker-compose up`
 
-## Versioning
-We use SemVer for versioning.
-
-## Author
-* Carlos Pliego *@carlosjpliego*
+## Versifying
+We use SemVer for versifying.
 
