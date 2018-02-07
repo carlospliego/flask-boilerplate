@@ -24,6 +24,7 @@ Database Docker Container
 * node
 * npm install -g gulp
 * Docker CE
+* npm install -g newman
 
 ### Installation
 * `npm install`
