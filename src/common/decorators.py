@@ -10,7 +10,6 @@ def composed(*decs):
     return deco
 
 def json_only(f):
-
     @wraps(f)
     def decorated_function(*args, **kwargs):
         try:
