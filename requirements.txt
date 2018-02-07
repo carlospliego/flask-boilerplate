@@ -2,6 +2,7 @@ aniso8601==2.0.0
 apispec==0.29.0
 astroid==1.6.1
 click==6.7
+coverage==4.5
 Flask==0.12.2
 flask-apispec==0.4.2
 Flask-Autodoc==0.1.2

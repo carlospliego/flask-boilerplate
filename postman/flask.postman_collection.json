@@ -1,8 +1,7 @@
 {
 	"info": {
 		"name": "flask",
-		"_postman_id": "2f8b2f69-0847-fd4b-5f59-51b65492f1b9",
-		"description": "",
+		"_postman_id": "cef4daad-1e71-fccd-732a-e4d921d766fe",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -50,7 +49,10 @@
 						"value": "Bearer {{access_token}}"
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "http://localhost:3000/user?page=1&limit=10",
 					"protocol": "http",
@@ -73,8 +75,7 @@
 							"equals": true
 						}
 					]
-				},
-				"description": ""
+				}
 			},
 			"response": []
 		},
@@ -102,7 +103,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"username\":\"david\",\n\t\"password\":\"1234((*(\",\n\t\"first\":\"David\",\n\t\"last\":\"Roberts\"\n}"
+					"raw": "{\n\t\"username\":\"carlos\",\n\t\"password\":\"1234\",\n\t\"first\":\"Carlos\",\n\t\"last\":\"Pliego\"\n}"
 				},
 				"url": {
 					"raw": "http://localhost:3000/auth/signup",
@@ -115,8 +116,7 @@
 						"auth",
 						"signup"
 					]
-				},
-				"description": ""
+				}
 			},
 			"response": []
 		},
@@ -156,7 +156,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"username\":\"carlos4\",\n\t\"password\":\"1234\"\n}"
+					"raw": "{\n\t\"username\":\"carlos\",\n\t\"password\":\"1234\"\n}"
 				},
 				"url": {
 					"raw": "http://localhost:3000/auth/login",
@@ -169,8 +169,7 @@
 						"auth",
 						"login"
 					]
-				},
-				"description": ""
+				}
 			},
 			"response": []
 		},
@@ -223,7 +222,10 @@
 						"value": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "http://localhost:3000/user/where?q={\"username\":\"david\"}&page=1&limit=10",
 					"protocol": "http",
@@ -252,8 +254,7 @@
 							"equals": true
 						}
 					]
-				},
-				"description": ""
+				}
 			},
 			"response": []
 		}

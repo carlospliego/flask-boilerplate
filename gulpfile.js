@@ -22,20 +22,26 @@ gulp.task('pip', shell.task((function pip(){
   }
 }())));
 
-gulp.task('local-test', shell.task([
-  'source .virtual/bin/activate && python -m unittest discover -s src\n',
-  'newman run ./postman/flask.postman_collection.json'
+gulp.task('tr', shell.task([
+  '.virtual/bin/coverage run --source=src -m unittest discover -s src\n',
+  '.virtual/bin/coverage html\n'
 ].join('')));
 
-// ci server should have node/gulp installed. 
-gulp.task('ci-test', shell.task([
-  'source .virtual/bin/activate && python -m unittest discover -s src\n',
-  'echo "need to run docker-compose up"',
-  'newman run ./postman/flask.postman_collection.json --silent --bail',
-  'echo "stop running containers"'
-].join('')));
+
+/**
+ * 
+ * Important testing setup
+ */
+// New test runner ()
+// local test runner
+// the idea for above should be
+// create a different ( docker-compose file for testing ) run docker-copose up with a testing environment. ( this will just tell the application to use the test datbase )
+// wipe database
+// run seed script
+// integration test `newman run ./postman/flask.postman_collection.json`
+
 
 gulp.task('w', function(){
-  gulp.watch('src/**/*.py', ['local-test'])
+  gulp.watch('src/**/*.py', ['tr'])
 });
 
