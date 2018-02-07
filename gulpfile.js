@@ -21,9 +21,11 @@ gulp.task('pip', shell.task((function pip(){
       +process.argv[4] + ' && pip freeze > requirements.txt && deactivate';
   }
 }())));
+// flask.postman_collection.json
 
-gulp.task('unit', shell.task([
-  'source .virtual/bin/activate && python -m unittest discover -s src\n'
+gulp.task('local-test', shell.task([
+  'source .virtual/bin/activate && python -m unittest discover -s src\n',
+  'newman run ./postman/flask.postman_collection.json --silent --bail'
 ].join('')));
 
 gulp.task('w', function(){
