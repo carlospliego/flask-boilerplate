@@ -21,14 +21,21 @@ gulp.task('pip', shell.task((function pip(){
       +process.argv[4] + ' && pip freeze > requirements.txt && deactivate';
   }
 }())));
-// flask.postman_collection.json
 
 gulp.task('local-test', shell.task([
   'source .virtual/bin/activate && python -m unittest discover -s src\n',
-  'newman run ./postman/flask.postman_collection.json --silent --bail'
+  'newman run ./postman/flask.postman_collection.json'
+].join('')));
+
+// ci server should have node/gulp installed. 
+gulp.task('ci-test', shell.task([
+  'source .virtual/bin/activate && python -m unittest discover -s src\n',
+  'echo "need to run docker-compose up"',
+  'newman run ./postman/flask.postman_collection.json --silent --bail',
+  'echo "stop running containers"'
 ].join('')));
 
 gulp.task('w', function(){
-  gulp.watch('src/**/*.py', ['unit'])
+  gulp.watch('src/**/*.py', ['local-test'])
 });
 
