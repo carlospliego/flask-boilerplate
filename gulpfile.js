@@ -40,6 +40,11 @@ gulp.task('tr', shell.task([
 // run seed script
 // integration test `newman run ./postman/flask.postman_collection.json`
 
+gulp.task('ntr', shell.task([
+  '.virtual/bin/coverage run --source=src -m unittest discover -s src\n',
+  '.virtual/bin/coverage html\n'
+].join('')));
+
 
 gulp.task('w', function(){
   gulp.watch('src/**/*.py', ['tr'])
