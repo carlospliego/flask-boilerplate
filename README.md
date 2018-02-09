@@ -33,6 +33,8 @@ Database Docker Container
 * `npm install`
 * `gulp install`
 
+### Changing ENV settings
+* `gulp env`
 
 ### IDE Setup
 Make sure that your python interpreter is reading from the .virtual directory 

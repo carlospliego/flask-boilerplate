@@ -23,9 +23,20 @@ gulp.task('pip', shell.task((function pip(){
 }())));
 
 gulp.task('tr', shell.task([
-  '.virtual/bin/coverage run --source=src -m unittest discover -s src\n',
+  'export $(cat .env | xargs) && .virtual/bin/coverage run --source=src -m unittest discover -s src\n',
   '.virtual/bin/coverage html\n'
 ].join('')));
+
+
+// TODO rebuild .env gulp file
+
+//gulp env
+
+
+gulp.task('env', shell.task([].concat(
+  create_local_runtime_variables
+).join('')));
+
 
 
 /**

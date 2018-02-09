@@ -3,3 +3,8 @@ FLASK_DEBUG=1
 
 LC_ALL=en_US.utf-8 
 LANG=en_US.utf-8
+
+JWT_SECRET_KEY=Jekb&*38g7v8&D*#h3JDKWJEHbjejskLWKAjcjIGHejDKLSKwjqkJDJbkdlke
+HOST=0.0.0.0
+DB_NAME=flask
+DB_HOST=mongodb

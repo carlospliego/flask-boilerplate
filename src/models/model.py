@@ -22,7 +22,8 @@ class Model(Document):
     # TODO does not need to extend Document anymore since you're just passing the context in
     def where(ctx, *args, **kwargs):
         # pprint(ctx, file=sys.stderr)
-        print(ctx.objects(**kwargs), *args, file=sys.stderr)
-        
-        pass
+        # print(ctx.objects(**kwargs), *args, file=sys.stderr)
+        return ctx.objects(**kwargs)
+        # pass
         # return 'brains'
+        
