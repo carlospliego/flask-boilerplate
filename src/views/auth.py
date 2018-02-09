@@ -33,7 +33,7 @@ def signup():
 @auth.route('/login', methods=['POST'])
 @composed(json_only, json_res)
 def login():
-
+    
     login_data = request.get_json()
 
     if 'username' not in login_data:
@@ -50,29 +50,4 @@ def login():
 
     return jsonify(access_token=access_token), 200
 
-@auth.route('/test', methods=['GET'])
-@composed(json_only, json_res)
-def test():
-
-    login_data = request.get_json()
-
-    if 'username' not in login_data:
-        return jsonify({"msg":"Missing username parameter"}), 400
-    if 'password' not in login_data:
-        return jsonify({"msg":"Missing password parameter"}), 400
-
-    # user = User.objects(username=login_data['username']).first()
-    user = Model.where(User, username=login_data['username']).first()
-
-    if not user or not pbkdf2_sha256.verify(login_data['password'], user.password):
-        return jsonify({"msg":"Bad username or password"}), 401
-
-    access_token = create_access_token(identity=login_data['password'])
-
-    return jsonify(access_token=access_token), 200 
-
-    # print('Hello world!', file=sys.stderr)
-    # print('Hey there', file=sys.stderr)
-    # user = User.brains()
-    # user = Model.where(User, username='carlos')
-    # return jsonify({"msg":"authenticated"}), 200
+    
