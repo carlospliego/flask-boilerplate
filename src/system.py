@@ -24,6 +24,9 @@ def create_app():
     from views.auth import auth
     app.register_blueprint(auth, url_prefix='/auth')
 
+    app.debug = True
+    app.secret_key = '141-376-702'
+
     app.config = {**app.config, **SETTINGS}  # load settings
 
     JWTManager(app)

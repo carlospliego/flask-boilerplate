@@ -6,6 +6,8 @@ from passlib.hash import pbkdf2_sha256
 from flask_jwt_extended import create_access_token, jwt_required
 from models.user import User
 from common.decorators import json_only, composed, json_res
+from models.model import Model
+import sys
 
 auth = Blueprint('auth', __name__)
 
@@ -48,7 +50,11 @@ def login():
 
     return jsonify(access_token=access_token), 200
 
-@auth.route('/validate', methods=['POST'])
-@composed(json_only, json_res, jwt_required)
-def validate():
+@auth.route('/test', methods=['GET'])
+@composed(json_only, json_res)
+def test():
+    # print('Hello world!', file=sys.stderr)
+    # print('Hey there', file=sys.stderr)
+    # user = User.brains()
+    user = Model.where(User, username='carlos')
     return jsonify({"msg":"authenticated"}), 200
