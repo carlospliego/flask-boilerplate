@@ -103,6 +103,7 @@ For seed information : have the following extera docker containers:
 
     // establish connection
 
+    ```
     NAMES = {
         names = [
             'Bill',
@@ -138,7 +139,7 @@ For seed information : have the following extera docker containers:
     actions = {
         create:(args)=>{
             // .. create
-            'col'
+            'col' bn
         }
         insert:(args)=>{
             // .. insert
@@ -149,5 +150,6 @@ For seed information : have the following extera docker containers:
         i.run // what to do
         i[i.run]//what to run
         actions[i.run](i[i.run])
+    ```
     
 * migrate

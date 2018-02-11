@@ -25,3 +25,7 @@ services:
     ports:
         - 27017:27017
     command: mongod --logpath=/dev/null #--smallfiles --logpath=/dev/null # --quiet
+  mongo-seed:
+    build: ./mongo-seed
+    links:
+      - mongodb
