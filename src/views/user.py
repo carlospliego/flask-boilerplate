@@ -20,7 +20,7 @@ def where(pag, q):
 
 
 @user.route('/', methods=['GET'])
-@composed(paginated, json_res)
+@composed(jwt_required, paginated, json_res)
 def index(pag):
 
     users = User.objects.all().skip(pag['offset']).limit(pag['limit']).exclude("id", "password")
