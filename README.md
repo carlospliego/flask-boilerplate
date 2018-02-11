@@ -92,3 +92,62 @@ notice the linking
 ## Versifying
 We use SemVer for versifying.
 
+
+# Development Notes
+
+For seed information : have the following extera docker containers:
+
+* dev-seed
+    This will be responsible for establishing a connection with the datbase container. By executing after the mounting of that container. 
+    The algorithm would look something like this:
+
+    // establish connection
+
+    NAMES = {
+        names = [
+            'Bill',
+            'Dave',
+            'Andy',
+            'Roger',
+            'Homer',
+            'Peter'
+        ]
+        random()=>{
+            return (names[Math.random() * (names.length)]) ? 'Default'
+        }
+    }
+    const schema = [
+        {run: 'create', create:'db'},
+        {create:'col'}, // or {create:'collection'}
+        {
+            insert:{
+                name: ()=>{
+                    return NAMES.random()
+                }
+            }
+            
+        }
+    ]
+
+    <!-- const data = [{
+        apply:(s)=>{
+            return connectionHandler.execute(this); 
+        }      
+    }]// iteratable objects  -->
+
+    actions = {
+        create:(args)=>{
+            // .. create
+            'col'
+        }
+        insert:(args)=>{
+            // .. insert
+        }
+    }
+
+    for i in schema:
+        i.run // what to do
+        i[i.run]//what to run
+        actions[i.run](i[i.run])
+    
+* migrate
