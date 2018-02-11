@@ -71,23 +71,8 @@ Run a container, linking it to mongodb
 
 ## Common Docker
 
-### Build Image
-`docker build -t <img-tag> . -f <Dockerfile>`
-
-### Running a containers manually
-#### Database
-since the service container depends on the database, you'll want to run this first
-`docker run --name mongodb -d -v $(pwd)/data/db:/data/db mongo`
-
-#### Service
-notice the linking
-`docker run -d --name flask-app -p <ports> --link mongodb <img-tag>`
-
-### Running Mongo In Shell
-`docker exec -it <container-id> mongo`
-
-### Running containers via docker-compose ( development only )
-`docker-compose up`
+### Development Docker
+`docker-compose -f dev.docker-compose.yml build`
 
 ## Versifying
 We use SemVer for versifying.
