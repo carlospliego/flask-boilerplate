@@ -1,1 +1,11 @@
-[{"username":"carlos4","password":"1234"}]
+[
+    {
+        "_id" : {"$oid":"5143afc66d44e1ceb372121e"},
+        "created" : { "$date" : "2018-02-11T22:35:42.025Z"},
+        "updated" : { "$date" : "2018-02-11T22:35:42.025Z"},
+        "username" : "carlos",
+        "first" : "Carlos",
+        "last" : "Pliego",
+        "password" : "$pbkdf2-sha256$80$WSvlPOccwzg$lMbtj79bxcUTqecZ2vHLgVKsVDmk8N9ScpIsQZHKUuI"
+    }
+]
