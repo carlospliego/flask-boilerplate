@@ -22,42 +22,29 @@ gulp.task('pip', shell.task((function pip(){
   }
 }())));
 
-gulp.task('tr', shell.task([
-  'export $(cat .env | xargs) && .virtual/bin/coverage run --source=src -m unittest discover -s src\n',
-  '.virtual/bin/coverage html\n'
-].join('')));
-
-
-// TODO rebuild .env gulp file
-
-//gulp env
-
-
 gulp.task('env', shell.task([].concat(
   create_local_runtime_variables
 ).join('')));
 
-
-
-/**
- * 
- * Important testing setup
- */
-// New test runner ()
-// local test runner
-// the idea for above should be
-// create a different ( docker-compose file for testing ) run docker-copose up with a testing environment. ( this will just tell the application to use the test datbase )
-// wipe database
-// run seed script
-// integration test `newman run ./postman/flask.postman_collection.json`
-
+gulp.task('unit', shell.task([
+  'export $(cat .env | xargs) && .virtual/bin/coverage run --source=src -m unittest discover -s src\n',
+  '.virtual/bin/coverage html\n'
+].join('')));
 
 gulp.task('newman', shell.task([].concat(
-  ['newman run ./postman/flask.postman_collection.json']
+  [
+    'docker-compose up mongo-seed\n',
+    'node_modules/.bin/newman run ./postman/flask.postman_collection.json\n',
+    'docker-compose up mongo-seed'
+  ]
 ).join('')));
 
+gulp.task('test', shell.task([
+  'gulp newman\n',
+  'gulp unit'
+].join('')));
 
 gulp.task('w', function(){
-  gulp.watch('src/**/*.py', ['tr'])
+  gulp.watch('src/**/*.py', ['test'])
 });
 

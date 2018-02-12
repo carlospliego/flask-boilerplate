@@ -6,5 +6,5 @@ class TestSettings(unittest.TestCase):
         self.app = create_app()
 
     def test_config(self):
-        self.assertEqual(self.app.config['JWT_SECRET_KEY'], 'super-secret')
+        self.assertEqual(self.app.config['JWT_SECRET_KEY'], 'Jekb&*38g7v8&D*#h3JDKWJEHbjejskLWKAjcjIGHejDKLSKwjqkJDJbkdlke')
         self.assertEqual(self.app.config['HOST'], '0.0.0.0')

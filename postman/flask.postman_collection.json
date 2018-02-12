@@ -1,86 +1,13 @@
 {
 	"info": {
 		"name": "flask",
-		"_postman_id": "cef4daad-1e71-fccd-732a-e4d921d766fe",
+		"_postman_id": "2f8b2f69-0847-fd4b-5f59-51b65492f1b9",
+		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "/user",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "b9114888-62f9-4b7b-93b4-e13d754ddc97",
-						"type": "text/javascript",
-						"exec": [
-							"pm.test(\"Response time is less than 200ms\", function () {",
-							"    pm.expect(pm.response.responseTime).to.be.below(200);",
-							"});",
-							"",
-							"",
-							"pm.test(\"Status code is 200\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});",
-							"",
-							"pm.test(\"Has object keys\", function () {",
-							"    var jsonData = pm.response.json();",
-							"    ",
-							"    jsonData.forEach(function(d){",
-							"        pm.expect(d.hasOwnProperty('created')).to.eql(true)",
-							"        pm.expect(d.hasOwnProperty('username')).to.eql(true)",
-							"        pm.expect(d.hasOwnProperty('first')).to.eql(true)",
-							"        pm.expect(d.hasOwnProperty('last')).to.eql(true)",
-							"        ",
-							"        pm.expect(d.hasOwnProperty('id')).to.eql(false)",
-							"        pm.expect(d.hasOwnProperty('password')).to.eql(false)",
-							"        ",
-							"    })",
-							"});"
-						]
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer {{access_token}}"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "http://localhost:3000/user?page=1&limit=10",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"user"
-					],
-					"query": [
-						{
-							"key": "page",
-							"value": "1",
-							"equals": true
-						},
-						{
-							"key": "limit",
-							"value": "10",
-							"equals": true
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "/user",
+			"name": "/auth/signup",
 			"event": [
 				{
 					"listen": "test",
@@ -116,12 +43,13 @@
 						"auth",
 						"signup"
 					]
-				}
+				},
+				"description": ""
 			},
 			"response": []
 		},
 		{
-			"name": "/auth",
+			"name": "/auth/login",
 			"event": [
 				{
 					"listen": "test",
@@ -169,7 +97,80 @@
 						"auth",
 						"login"
 					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b9114888-62f9-4b7b-93b4-e13d754ddc97",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Has object keys\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    ",
+							"    jsonData.forEach(function(d){",
+							"        pm.expect(d.hasOwnProperty('created')).to.eql(true)",
+							"        pm.expect(d.hasOwnProperty('username')).to.eql(true)",
+							"        pm.expect(d.hasOwnProperty('first')).to.eql(true)",
+							"        pm.expect(d.hasOwnProperty('last')).to.eql(true)",
+							"        ",
+							"        pm.expect(d.hasOwnProperty('id')).to.eql(false)",
+							"        pm.expect(d.hasOwnProperty('password')).to.eql(false)",
+							"        ",
+							"    })",
+							"});"
+						]
+					}
 				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3000/user?page=1&limit=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1",
+							"equals": true
+						},
+						{
+							"key": "limit",
+							"value": "10",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
 			},
 			"response": []
 		},
@@ -222,10 +223,7 @@
 						"value": ""
 					}
 				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
+				"body": {},
 				"url": {
 					"raw": "http://localhost:3000/user/where?q={\"username\":\"david\"}&page=1&limit=10",
 					"protocol": "http",
@@ -254,7 +252,8 @@
 							"equals": true
 						}
 					]
-				}
+				},
+				"description": ""
 			},
 			"response": []
 		}

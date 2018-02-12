@@ -6,8 +6,6 @@ import os
     If this setting is based on an environment variable be sure to add that declaration
     to the try/except block
 """
-
-
 # check environment variables
 try:
     os.environ['JWT_SECRET_KEY']
@@ -20,8 +18,8 @@ except KeyError as e:
     pass
 
 SETTINGS = {
-    'JWT_SECRET_KEY':'super-secret',
-    'HOST':'0.0.0.0',
-    'DB_NAME':'flask',
-    'DB_HOST':'mongodb'
+    'JWT_SECRET_KEY':os.environ['JWT_SECRET_KEY'],
+    'HOST':os.environ['HOST'],
+    'DB_NAME':os.environ['DB_NAME'],
+    'DB_HOST':os.environ['DB_HOST']
 }
