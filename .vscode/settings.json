@@ -1,3 +1,12 @@
 {
-    "python.pythonPath": "${workspaceFolder}/.virtual/bin/python"
+    "eslint.autoFixOnSave": true,
+    "window.zoomLevel": 0,
+    "eslint.enable": true,
+    "python.linting.enabledWithoutWorkspace": false,
+    "python.pythonPath": "./server/.virtual/bin/python3",
+    "python.linting.enabled": true,
+    "python.venvPath": "./server/.virtual",
+    "python.linting.pylintArgs": [
+        "--load-plugins=pylint_flask"
+    ]
 }
