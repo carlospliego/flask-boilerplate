@@ -45,6 +45,6 @@ gulp.task('test', shell.task([
 ].join('')));
 
 gulp.task('w', function(){
-  gulp.watch('src/**/*.py', ['test'])
+  gulp.watch('src/**/*.py', ['unit'])
 });
 

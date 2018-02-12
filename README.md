@@ -68,11 +68,14 @@ Build or checkout your image
 Run a container, linking it to mongodb
 `docker run --name <container-name> -d -p <ports> --link mongodb <img-tag>`
 
-
-## Common Docker
-
-### Development Docker
-`docker-compose -f dev.docker-compose.yml build`
-
 ## Versifying
 We use SemVer for versifying.
+
+## Development Notes
+
+Current User -> 
+```
+from flask_jwt_extended import get_jwt_identity
+
+username = get_jwt_identity();
+```

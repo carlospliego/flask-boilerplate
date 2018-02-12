@@ -1,7 +1,7 @@
 from flask import (
-    Blueprint
+    Blueprint, jsonify
 )
-from flask_jwt_extended import jwt_required
+from flask_jwt_extended import jwt_required, get_jwt_identity
 from models.user import User
 from common.decorators import paginated, query, composed, json_res
 
@@ -15,7 +15,6 @@ def where(pag, q):
     users = User.objects(
         __raw__=q
     ).skip(pag['offset']).limit(pag['limit']).exclude("id", "password")
-
     return users.to_json(), 200
 
 

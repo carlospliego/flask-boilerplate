@@ -7,7 +7,6 @@ from flask_jwt_extended import create_access_token, jwt_required
 from models.user import User
 from common.decorators import json_only, composed, json_res
 from models.model import Model
-import sys
 
 auth = Blueprint('auth', __name__)
 
@@ -46,7 +45,7 @@ def login():
     if not user or not pbkdf2_sha256.verify(login_data['password'], user.password):
         return jsonify({"msg":"Bad username or password"}), 401
 
-    access_token = create_access_token(identity=login_data['password'])
+    access_token = create_access_token(identity=login_data['username'])
 
     return jsonify(access_token=access_token), 200
 

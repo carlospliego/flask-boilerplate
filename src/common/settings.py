@@ -6,6 +6,7 @@ import os
     If this setting is based on an environment variable be sure to add that declaration
     to the try/except block
 """
+
 # check environment variables
 try:
     os.environ['JWT_SECRET_KEY']
