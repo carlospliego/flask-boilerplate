@@ -2,14 +2,13 @@ version: '2'
 services:
   server:
     image: python:3.6.4
-    container_name: server
     working_dir: /mnt
     volumes:
       - .:/mnt
     ports:
       - 3000:5000
     env_file:
-      - .env # todo just make this reference the items in env/ don't copy
+      - .env
     links:
       - mongodb
     depends_on:
@@ -28,6 +27,5 @@ services:
     command: mongod --logpath=/dev/null #--smallfiles --logpath=/dev/null # --quiet
   mongo-seed:
     build: ./mongo-seed
-    container_name: mongo-seed
     links:
       - mongodb
