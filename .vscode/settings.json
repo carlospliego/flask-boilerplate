@@ -3,7 +3,7 @@
     "window.zoomLevel": 0,
     "eslint.enable": true,
     "python.linting.enabledWithoutWorkspace": false,
-    "python.pythonPath": "./server/.virtual/bin/python3",
+    "python.pythonPath": "${workspaceFolder}/.virtual/bin/python",
     "python.linting.enabled": true,
     "python.venvPath": "./server/.virtual",
     "python.linting.pylintArgs": [
