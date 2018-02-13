@@ -34,7 +34,7 @@ gulp.task('unit', shell.task([
 gulp.task('newman', shell.task([].concat(
   [
     'docker-compose up mongo-seed\n',
-    'node_modules/.bin/newman run ./postman/flask.postman_collection.json\n',
+    'newman run ./postman/flask.postman_collection.json\n',
     'docker-compose up mongo-seed'
   ]
 ).join('')));
